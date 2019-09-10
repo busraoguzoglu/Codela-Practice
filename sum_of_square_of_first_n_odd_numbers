@@ -1,0 +1,23 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int nNumber) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  
+  	int sum = 0;
+  	int add;
+  	int index = 1;
+  
+  	for(int i = 0; i < nNumber; i++){
+      add = index*index;
+      sum += add;
+      index += 2;
+    }
+  
+    int result = sum;
+    return result;
+}
