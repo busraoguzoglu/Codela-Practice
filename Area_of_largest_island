@@ -1,0 +1,107 @@
+/*
+ * Complete the solution function
+ */
+
+/* Area of the largest island
+ *  codela.io
+ */
+
+static int solution(int width, int height, int[] island_map) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  int areas[] = new int[width*height];
+  int ifAdded[] = new int[width*height];
+  
+  for(int i = 0; i < width*height; i++){
+    
+    for(int j = 0; j < width*height; j++){
+  	ifAdded[j] = 0;
+    }
+    
+    if(island_map[i] == 0)
+      areas[i] = 0;
+    
+    else{
+      
+      int area = 0;
+      ifAdded[i] = 1;
+      
+      int recursiveArea = 0; 
+      recursiveArea = checkNeighbours(island_map, i, width, height, ifAdded);
+      area += recursiveArea;
+      
+      if(i-1 >= 0){
+		recursiveArea = checkNeighbours(island_map, i-1, width, height, ifAdded);
+        area += recursiveArea;
+  	}
+      
+    if(i+1 <= width*height-1){
+   		recursiveArea = checkNeighbours(island_map, i+1, width, height, ifAdded);
+        area += recursiveArea;
+  }
+    if(i-width >= 0){
+    	recursiveArea = checkNeighbours(island_map, i-width, width, height, ifAdded);
+        area += recursiveArea;
+  }
+    if(i+width <= width*height-1){
+    	recursiveArea = checkNeighbours(island_map, i+width, width, height, ifAdded);
+        area += recursiveArea;
+  }
+      
+     areas[i] = area; 
+      
+    }
+  }
+ 
+  int maxArea = areas [0];
+  for(int i = 1; i < width*height; i++){
+    if(areas[i] > maxArea)
+      maxArea = areas[i];
+  }
+  
+  int result = 0;
+  result = maxArea;
+  return result;
+}
+
+
+public static int checkNeighbours(int[] island_map, int i, int width, int height, int[] ifAdded){
+  
+  int recursiveArea = 0;
+  
+  if(i-1 >= 0){
+    if(island_map[i-1] == 1)
+      if(ifAdded[i-1] == 0){
+         recursiveArea++;
+         ifAdded[i-1] = 1;
+      }
+  }
+    if(i+1 <= width*height-1){
+    if(island_map[i+1] == 1)
+      if(ifAdded[i+1] == 0){
+         recursiveArea++;
+         ifAdded[i+1] = 1;
+  }
+    }
+      
+    if(i-width >= 0){
+    if(island_map[i-width] == 1)
+      if(ifAdded[i-width] == 0){
+         recursiveArea++;
+         ifAdded[i-width] = 1;
+  }
+    }
+      
+    if(i+width <= width*height-1){
+    if(island_map[i+width] == 1)
+      if(ifAdded[i+width] == 0){
+         recursiveArea++;
+         ifAdded[i+width] = 1;
+  }
+    }
+  
+  return recursiveArea; 
+}
