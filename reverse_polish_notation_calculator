@@ -1,0 +1,97 @@
+/*
+ * Complete the solution function
+ */ 
+
+static int solution(String[] expr) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  
+  
+    Stack<String> stack = new Stack<String>(); 
+    // Char 'E' for Empty
+    String returnc = "E";
+    boolean returnb;
+  	int array_length = expr.length;
+    
+    for(int i = 0; i < array_length; i++){
+      
+      returnb = expression_checker(expr[i], returnc);
+      //returnc has the expr,
+      //returnb has if its operator or not.
+      
+      if(!returnb){
+        stack.push(returnc);
+      }
+      else{
+        while(!stack.isEmpty()){
+       
+          int a = Integer.parseInt(stack.pop());
+          int b = Integer.parseInt(stack.pop());
+          
+          
+          //result
+          int c = 0;
+          String cnew = "";
+          
+          if(returnc == "+"){
+            c = a+b;
+            cnew = Integer.toString(c);
+            stack.push(cnew);
+          }
+          if(returnc == "-"){
+            c = b-a;
+           cnew = Integer.toString(c);
+            stack.push(cnew);
+          }
+          if(returnc == "*"){
+            c = a*b;
+            cnew = Integer.toString(c);
+            stack.push(cnew);
+          }
+          if(returnc == "/"){
+            if(a != 0 && b != 0){
+              c = b/a;
+              cnew = Integer.toString(c);
+            
+            }
+            stack.push(cnew);
+          }  
+        }
+      }
+    }
+
+    int result = 0;
+    return result;
+}
+
+
+//Returns the operator in returnc, returns if the char is a
+//valid operator in returnb.
+
+static boolean expression_checker(String c, String returnc){
+  
+  boolean returnb = false;
+  
+  if(c == "+"){
+    returnc = "+";
+    returnb = true;
+  }
+  if(c == "-"){
+    returnc = "-";
+    returnb = true;
+  }
+  if(c == "*"){
+    returnc = "*";
+    returnb = true;
+  }
+  if(c == "/"){
+    returnc = "/";
+    returnb = true;
+  }
+  return returnb;
+}
+
+
