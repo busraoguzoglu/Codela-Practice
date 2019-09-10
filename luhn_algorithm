@@ -1,0 +1,45 @@
+/*
+ * Complete the solution function
+ */
+static boolean solution(String creditCard) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+ 
+  	
+   int index = 0;
+   int sum = 0;
+   int length = creditCard.length();
+  
+   for (int i = 0; i < length; i++){
+     if( Character.isDigit(creditCard.charAt(i))){
+       index++;
+       int num = creditCard.charAt(i);
+       if(index%2 == 0){
+         num = creditCard.charAt(i)*2;
+         if(num > 9){
+           int newNum;
+           newNum = num - 9;
+           sum += newNum;
+         }
+         else{
+           sum += num;
+         }
+       }
+       else{
+         sum += num;
+       }
+     }
+   } 
+  
+    boolean result = false;
+	int check = sum%10;
+  	if(check == 0){
+      result = true;
+    }
+  
+
+    return result;
+}
