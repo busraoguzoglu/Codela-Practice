@@ -1,0 +1,44 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int num) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  
+  	// 1. We can try all numbers from i=1 until i*i >= num
+    // 2. Binary Search -> Complexity = logn
+  
+  	int top = num;
+    int bottom = 1;
+    int middle;
+    int result = 0;
+  	
+  	if(num == 0)
+      result = 0;
+  	if(num == 1)
+      result = 1;
+  	
+  	while(top >= bottom){
+      
+      middle = top + bottom / 2;
+      
+      if(middle * middle == num){
+        result = middle;
+      }
+      
+      else if(middle*middle < num){
+        bottom = middle + 1;
+        result = middle;
+        
+      }
+      
+      else if(middle*middle > num){
+        top = middle - 1;
+      } 
+    }
+  
+    return result;
+}
