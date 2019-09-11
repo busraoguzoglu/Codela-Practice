@@ -9,11 +9,12 @@ static int solution(int[] shelfLength, String[] books) {
      */
   
   	//Number of shelves and books
+  	int result = 0;
   	int shelfNum = shelfLength.length;
   	int bookNum = books.length;
   	int[] bookLength = new int[bookNum];
   	
-  
+  	//Similar to Knapsack Problem
   	//1. Make array of book length
   	for(int i = 0; i < bookNum; i++){
       StringBuffer number = new StringBuffer();
@@ -26,7 +27,7 @@ static int solution(int[] shelfLength, String[] books) {
 
       snum = number.toString();
       bookLength[i] = Integer.parseInt(snum);
-      System.out.println(bookLength[i]);
+      //System.out.println(bookLength[i]);
     }
   	
   	//2. Find biggest shelf and place biggest books
@@ -46,12 +47,12 @@ static int solution(int[] shelfLength, String[] books) {
   	if(biggestBook > biggestShelf){
       result = 0;
     }
-      
+    
   	
   	
 
   	
   
-    int result = 0;
+    
     return result;
 }
