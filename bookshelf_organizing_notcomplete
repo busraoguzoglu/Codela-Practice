@@ -1,0 +1,57 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int[] shelfLength, String[] books) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  
+  	//Number of shelves and books
+  	int shelfNum = shelfLength.length;
+  	int bookNum = books.length;
+  	int[] bookLength = new int[bookNum];
+  	
+  
+  	//1. Make array of book length
+  	for(int i = 0; i < bookNum; i++){
+      StringBuffer number = new StringBuffer();
+      String snum;
+      
+      for(char c : books[i].toCharArray())
+      {
+        if(Character.isDigit(c)) number.append(c);
+      }
+
+      snum = number.toString();
+      bookLength[i] = Integer.parseInt(snum);
+      System.out.println(bookLength[i]);
+    }
+  	
+  	//2. Find biggest shelf and place biggest books
+  	
+  	int biggestShelf = shelfLength[0];
+  	for(int i = 0; i < shelfNum; i++){
+      if(shelfLength[i] > biggestShelf)
+        biggestShelf = shelfLength[i];
+    }
+  
+  	int biggestBook = bookLength[0];
+  	for(int i = 0; i < bookNum; i++){
+      if(bookLength[i] > biggestBook)
+        biggestBook = bookLength[i];
+    }
+  
+  	if(biggestBook > biggestShelf){
+      result = 0;
+    }
+      
+  	
+  	
+
+  	
+  
+    int result = 0;
+    return result;
+}
