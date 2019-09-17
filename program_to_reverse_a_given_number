@@ -1,0 +1,22 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int num) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  	
+  	//Turn it into a String:
+  	String input = Integer.toString(num);
+  	String output = "";
+  	int length = input.length();
+  	
+  	for(int i = length-1; i >= 0; i--){
+      output += input.charAt(i);
+    }
+  	
+	int result = Integer.parseInt(output);
+    return result;
+}
