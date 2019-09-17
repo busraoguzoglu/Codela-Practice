@@ -1,0 +1,20 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int[] nums) {
+    /*  Method is from: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+     */
+  	int size = nums.length;
+  	showUnique(nums, size);
+    int result = 0;
+    return result;
+}
+
+static void showUnique(int[] nums, int size){
+  for(int i = 0; i < size; i++){
+    if(nums[Math.abs(nums[i])] >= 0)
+      nums[Math.abs(nums[i])] = -nums[Math.abs(nums[i])];
+    else
+      System.out.print(Math.abs(nums[i]) + " ");
+  }
+}
