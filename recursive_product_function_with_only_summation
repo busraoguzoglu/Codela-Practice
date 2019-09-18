@@ -17,12 +17,15 @@ static int solution(int num1, int num2) {
 
 static int recursiveFunction(int num1, int num2, int sum){
   int newNum2;
+  int newSum;
   if(num2 > 0){
-    sum += num1;
+    newSum = sum + num1;
     newNum2 = num2 - 1;
-    recursiveFunction(num1, newNum2, sum);
+    newSum = recursiveFunction(num1, newNum2, newSum);
+    return newSum;
   } 
   else{
     return sum;
   }
 }
+
