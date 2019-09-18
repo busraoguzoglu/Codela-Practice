@@ -1,0 +1,28 @@
+/*
+ * Complete the solution function
+ */
+static int solution(int num1, int num2) {
+    /*
+     *  Write your solution here !
+     *  You can use the result variable
+     *  below to return your answer
+     */
+  	
+  	int sum = 0;
+    int result = 0;
+    result = recursiveFunction(num1, num2, sum);
+
+    return result;
+}
+
+static int recursiveFunction(int num1, int num2, int sum){
+  int newNum2;
+  if(num2 > 0){
+    sum += num1;
+    newNum2 = num2 - 1;
+    recursiveFunction(num1, newNum2, sum);
+  } 
+  else{
+    return sum;
+  }
+}
